@@ -16,10 +16,10 @@ class _SurvivalPageState extends State<SurvivalPage> {
             text: "Am I streaming?"
           ),
           InputCheckbox(
-            text: "Am I streaming?"
+            text: "Does Bruno Mars is gay?"
           ),
           InputCheckbox(
-            text: "Am I streaming?"
+            text: "What is a 'werewolf'?"
           ),
         ],
       ),

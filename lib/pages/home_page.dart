@@ -15,6 +15,15 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: <Panel>[
             // TODO: Panel data array
+            Panel(
+              route: '/cosmos',
+            ),
+            Panel(
+              route: '/love',
+            ),
+            Panel(
+              route: '/survival',
+            ),
           ],
         ),
       ),

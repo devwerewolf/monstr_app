@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class InputCheckbox extends StatefulWidget {
-  InputCheckbox({ Key key, @required this.text }) : super(key: key);
-  
   final String text;
+  
+  InputCheckbox({ Key key, @required this.text }) : super(key: key);
   
   @override
   _InputCheckboxState createState() => _InputCheckboxState();
