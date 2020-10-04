@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:monstr_app/pages/home_page/panel.dart';
 
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,12 +11,15 @@ class _HomePageState extends State<HomePage> {
             // TODO: Panel data array
             Panel(
               route: '/cosmos',
+              items: [],
             ),
             Panel(
               route: '/love',
+              items: [],
             ),
             Panel(
               route: '/survival',
+              items: [],
             ),
           ],
         ),

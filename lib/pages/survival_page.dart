@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:monstr_app/design/input_checkbox.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SurvivalPage extends StatefulWidget {
   @override

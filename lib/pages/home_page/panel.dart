@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
 class Panel extends StatefulWidget {
-  final String route;
   
-  Panel({Key key, @required this.route}) : super(key: key);
+  final String route;
+  final List<Widget> items;
+  
+  // TODO: Make required: items
+  Panel({Key key, @required this.route, this.items}) : super(key: key);
   
   @override
   _PanelState createState() => _PanelState();
@@ -19,8 +22,14 @@ class _PanelState extends State<Panel> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: _goToRoute,
-      child: Text(
-        widget.route
+      // TODO: Make into a smart scrolling whatchamacallit
+      child: Column(
+        children: [
+          Text(
+            widget.route
+          ),
+          ...widget.items,
+        ],
       ),
     );
   }
