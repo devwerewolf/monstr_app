@@ -1,7 +1,8 @@
 import 'package:bloc/bloc.dart';
+import 'package:meta/meta.dart';
 
-class BloobCubit extends Cubit<bool> {
-  BloobCubit() : super(false);
-  
-  void toggle() => emit(!state);
+part 'blood_state.dart';
+
+class BloodCubit extends Cubit<BloodState> {
+  BloodCubit() : super(BloodInitial());
 }
