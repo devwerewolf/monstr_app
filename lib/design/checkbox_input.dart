@@ -1,28 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:bloc/bloc.dart';
 
-class InputCheckbox extends StatefulWidget {
+class CheckboxInput extends StatefulWidget {
   final String text;
+  final bool value;
   
-  InputCheckbox({ Key key, @required this.text }) : super(key: key);
+  CheckboxInput({ Key key, @required this.text, this.value = false }) : super(key: key);
   
   @override
-  _InputCheckboxState createState() => _InputCheckboxState();
+  _CheckboxInputState createState() => _CheckboxInputState();
 }
 
-class _InputCheckboxState extends State<InputCheckbox> {
-  bool _value = false;
+class _CheckboxInputState extends State<CheckboxInput> {
+  bool _value;
   
   bool get value => _value;
   
   void _changeValue(bool newValue) {
     setState(() {
-      _value = !_value;
+      this._value = newValue;
     });
   }
   
   @override
   Widget build(BuildContext context) {
+    if (_value == null) {
+      _value = widget.value;  
+    }
+    
     return Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,

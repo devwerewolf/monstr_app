@@ -1,10 +1,9 @@
-// Libraries
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:monstr_app/data/blood_list.dart';
 import 'package:monstr_app/data/monstr_observer.dart';
-
-// Components
 import 'package:monstr_app/pages/cosmos_page.dart';
 import 'package:monstr_app/pages/home_page.dart';
 import 'package:monstr_app/pages/love_page.dart';
@@ -12,7 +11,16 @@ import 'package:monstr_app/pages/survival_page.dart';
 
 void main() {
   Bloc.observer = MonstrObserver();
-  runApp(MyApp());
+  // runApp(MyApp());
+  
+  runApp(
+    BlocProvider(
+      create: (context) {
+        return BloodListBloc();
+      },
+      child: MyApp(),
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {
