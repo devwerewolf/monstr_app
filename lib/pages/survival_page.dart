@@ -49,6 +49,7 @@ class _SurvivalPageState extends State<SurvivalPage> {
               }),
             );
           default:
+            // TODO: Load the bloodList properly for clean code
             BlocProvider.of<BloodListBloc>(context).add(LoadSuccessEvent());
             
             return Container(
