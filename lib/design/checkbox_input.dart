@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class CheckboxInput extends StatefulWidget {
   final String text;
   final bool value;
+  final Function(bool) onValueChanged;
   
-  CheckboxInput({ Key key, @required this.text, this.value = false }) : super(key: key);
+  CheckboxInput({ Key key, @required this.text, this.value = false, this.onValueChanged }) : super(key: key);
   
   @override
   _CheckboxInputState createState() => _CheckboxInputState();
@@ -19,6 +20,10 @@ class _CheckboxInputState extends State<CheckboxInput> {
     setState(() {
       this._value = newValue;
     });
+    
+    if (widget.onValueChanged != null) {
+      widget.onValueChanged(newValue);
+    }
   }
   
   @override

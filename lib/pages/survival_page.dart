@@ -10,31 +10,12 @@ class SurvivalPage extends StatefulWidget {
 }
 
 class _SurvivalPageState extends State<SurvivalPage> {
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //     body: Column(
-  //       children: [
-  //         InputCheckbox(
-  //           text: "Am I streaming?"
-  //         ),
-  //         InputCheckbox(
-  //           text: "Does Bruno Mars is gay?"
-  //         ),
-  //         InputCheckbox(
-  //           text: "What is a 'werewolf'?"
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
-  
   @override
   Widget build(BuildContext context) {
     // TODO: Implement a `FilteredBloodList` bloc for scalability
+    
     return BlocBuilder<BloodListBloc, BloodListState>(
       builder: (context, state) {
-        
         switch (state.runtimeType) {
           case LoadSuccessState:
             var bloodList = (state as LoadSuccessState).bloodList;
@@ -45,8 +26,16 @@ class _SurvivalPageState extends State<SurvivalPage> {
               itemCount: bloodList.length,
               itemBuilder: (BuildContext context, int index) {
                 Blood blood = bloodList[index];
-                return CheckboxInput(text: blood.type, value: blood.chosen);
-              }),
+                
+                return CheckboxInput(
+                  text: blood.type,
+                  value: blood.chosen,
+                  onValueChanged: (bool newValue) {
+                    blood.chosen = newValue;
+                    BlocProvider.of<BloodListBloc>(context).add(UpdatedEvent(blood));
+                  },
+                );
+              })
             );
           default:
             // TODO: Load the bloodList properly for clean code
