@@ -10,11 +10,12 @@ class BloodStats extends StatelessWidget {
         switch (state.runtimeType) {
           case LoadSuccessState:
             var bloodList = (state as LoadSuccessState).bloodList;
-            var chosenBloodList = bloodList.where((currentBlood) => currentBlood.chosen);
+            var chosenBloodList = bloodList.where((blood) => blood.chosen);
+            var chosenBloodListLength = chosenBloodList.length.toString();
             
             return Container(
               child: Text(
-                chosenBloodList.length.toString()
+                chosenBloodListLength
               ),
             );
           default:
