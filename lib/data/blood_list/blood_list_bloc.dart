@@ -49,6 +49,7 @@ class BloodListBloc extends Bloc<BloodListEvent, BloodListState> {
           }
         )
         .toList();
+      
       yield LoadSuccessState(updatedBloodList);
     }
   }

@@ -22,23 +22,23 @@ class _SurvivalPageState extends State<SurvivalPage> {
         
             return Scaffold(
               body: ListView.builder(
-              padding: const EdgeInsets.all(8),
-              itemCount: bloodList.length,
-              itemBuilder: (BuildContext context, int index) {
-                Blood blood = bloodList[index];
-                
-                return CheckboxInput(
-                  text: blood.type,
-                  value: blood.chosen,
-                  onValueChanged: (bool newValue) {
-                    blood.chosen = newValue;
-                    BlocProvider.of<BloodListBloc>(context).add(UpdatedEvent(blood));
-                  },
-                );
-              })
+                padding: const EdgeInsets.all(8),
+                itemCount: bloodList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  Blood blood = bloodList[index];
+                  
+                  return CheckboxInput(
+                    text: blood.type,
+                    value: blood.chosen,
+                    onValueChanged: (bool newValue) {
+                      blood.chosen = newValue;
+                      BlocProvider.of<BloodListBloc>(context).add(UpdatedEvent(blood));
+                    },
+                  );
+                })
             );
           default:
-            // TODO: Load the bloodList properly for clean code
+            // TODO: Load the bloodList properly for production purposes
             BlocProvider.of<BloodListBloc>(context).add(LoadSuccessEvent());
             
             return Container(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:monstr_app/pages/home_page/panel.dart';
+import 'package:monstr_app/pages/home_page/panel_items/blood_stats.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -19,7 +20,9 @@ class HomePage extends StatelessWidget {
             ),
             Panel(
               route: '/survival',
-              items: [],
+              items: [
+                BloodStats()
+              ],
             ),
           ],
         ),

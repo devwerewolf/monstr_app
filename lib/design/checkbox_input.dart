@@ -28,9 +28,7 @@ class _CheckboxInputState extends State<CheckboxInput> {
   
   @override
   Widget build(BuildContext context) {
-    if (_value == null) {
-      _value = widget.value;  
-    }
+    _value = widget.value;
     
     return Container(
       child: Row(

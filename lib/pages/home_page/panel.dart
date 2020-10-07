@@ -5,8 +5,8 @@ class Panel extends StatefulWidget {
   final String route;
   final List<Widget> items;
   
-  // TODO: Make required: items
-  Panel({Key key, @required this.route, this.items}) : super(key: key);
+  // TODO: Make items required?
+  Panel({Key key, @required this.route, this.items = const[]}) : super(key: key);
   
   @override
   _PanelState createState() => _PanelState();
