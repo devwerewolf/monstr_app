@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
-// import 'package:meta/meta.dart';
-import 'package:monstr_app/data/blood_list/blood_list_event.dart';
-import 'package:monstr_app/data/blood_list/blood_list_state.dart';
+import 'package:monstr_app/data/blood_list.dart';
 import 'package:monstr_app/models/blood.dart';
 
 class BloodListBloc extends Bloc<BloodListEvent, BloodListState> {
@@ -13,14 +11,11 @@ class BloodListBloc extends Bloc<BloodListEvent, BloodListState> {
     switch (event.runtimeType) {
       case LoadSuccessEvent:
         yield* _mapLoadSuccess();
-        
-        // TODO: Figure out if "break" is necessary after yield* for removing redundant code
+        break;
+      case UpdatedEvent:
+        yield* _mapUpdated(event);
         break;
     }
-    
-    // if (event is LoadSuccessEvent) {
-    //   yield* _mapLoadSuccess();
-    // }
   }
   
   Stream<BloodListState> _mapLoadSuccess() async* {
@@ -39,6 +34,22 @@ class BloodListBloc extends Bloc<BloodListEvent, BloodListState> {
     }
     catch (_) {
       yield LoadFailureState();
+    }
+  }
+  
+  Stream<BloodListState> _mapUpdated(UpdatedEvent event) async* {
+    if (state is LoadSuccessState) {
+      var bloodList = (state as LoadSuccessState).bloodList;
+      var updatedBloodList = 
+        bloodList
+        .map(
+          (currentBlood) {
+            if (currentBlood.id == event.blood.id) return event.blood;
+            else return currentBlood;
+          }
+        )
+        .toList();
+      yield LoadSuccessState(updatedBloodList);
     }
   }
 }
