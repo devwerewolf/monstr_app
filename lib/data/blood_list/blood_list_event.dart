@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:monstr_app/models/blood.dart';
 
+// TODO: Place `final Blood blood` and canonicalized constructor in base class to reduce redundancy
+
 abstract class BloodListEvent extends Equatable {
   const BloodListEvent();
   

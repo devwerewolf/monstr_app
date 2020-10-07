@@ -13,6 +13,7 @@ void main() {
   Bloc.observer = MonstrObserver();
   // runApp(MyApp());
   
+  // TODO: Use `MultiBlocProvider` for scalability
   runApp(
     BlocProvider(
       create: (context) {
