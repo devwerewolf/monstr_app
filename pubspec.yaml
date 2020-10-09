@@ -26,6 +26,7 @@ dependencies:
   bloc: ^6.0.0
   flutter_bloc: ^6.0.0
   uuid: ^2.2.2
+  percent_indicator: ^2.1.7+4
   # equatable: ^1.2.5
 
 

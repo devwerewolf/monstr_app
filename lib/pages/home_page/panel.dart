@@ -20,16 +20,20 @@ class _PanelState extends State<Panel> {
   
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: _goToRoute,
-      // TODO: Make into a smart scrolling whatchamacallit
-      child: Column(
-        children: [
-          Text(
-            widget.route
+    return Expanded(
+      child: GestureDetector(
+        onTap: _goToRoute,
+        child: Container(
+          decoration: BoxDecoration(color: Colors.teal),
+          child: Column(
+            children: [
+              Text(
+                widget.route
+              ),
+              ...widget.items,
+            ],
           ),
-          ...widget.items,
-        ],
+        ),
       ),
     );
   }

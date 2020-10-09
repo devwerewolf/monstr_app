@@ -8,6 +8,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: Container(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Panel>[
             // TODO: Panel data array
             Panel(
