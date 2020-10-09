@@ -1,44 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:monstr_app/data/blood_list.dart';
+import 'package:monstr_app/models/blood.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-class BloodStats extends StatelessWidget {
+class BloodStats extends StatefulWidget {
+  final Blood blood;
+  
+  BloodStats({@required this.blood});
+  
+  @override
+  _BloodStatsState createState() => _BloodStatsState();
+}
+
+class _BloodStatsState extends State<BloodStats> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<BloodListBloc, BloodListState>(
-      builder: (context, state) {
-        switch (state.runtimeType) {
-          case LoadSuccessState:
-            var bloodList = (state as LoadSuccessState).bloodList;
-            var chosenBloodList = bloodList.where((blood) => blood.chosen);
-            var chosenBloodListLength = chosenBloodList.length.toString();
-            
-            return Container(
-              // child: Text(
-              //   chosenBloodListLength
-              // ),
-              child: LinearPercentIndicator(
-                width: 150,
-                lineHeight: 20,
-                progressColor: Colors.red,
-                percent: chosenBloodList.length / bloodList.length,
-              ),
-            );
-          default:
-            return Container(
-              child: Text(
-                "Ruh roh..."
-              ),
-            );
-            break;
-        }
-      }
+    Blood blood = widget.blood;
+    
+    return Container(
+      child: LinearPercentIndicator(
+        width: 150,
+        lineHeight: 20,
+        progressColor: Colors.red,
+        percent: blood.currentAmount / blood.maxAmount,
+      )
     );
-    // return Container(
-    //   child: Text(
-    //     "Hi"
-    //   ),
-    // );
   }
 }

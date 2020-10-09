@@ -22,10 +22,10 @@ class BloodListBloc extends Bloc<BloodListEvent, BloodListState> {
     try {
       // TODO: Load bloodList from an actual source for production purposes
       List<Blood> bloodList = [
-        Blood(type: "A+", chosen: true),
+        Blood(type: "A+", chosen: true, currentAmount: 3),
         Blood(type: "A-"),
         Blood(type: "B+"),
-        Blood(type: "B-", chosen: true),
+        Blood(type: "B-", chosen: true, currentAmount: 7),
         Blood(type: "O+"),
         Blood(type: "O-"),
       ];

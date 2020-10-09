@@ -38,9 +38,6 @@ class _SurvivalPageState extends State<SurvivalPage> {
                 })
             );
           default:
-            // TODO: Load the bloodList properly for production purposes
-            BlocProvider.of<BloodListBloc>(context).add(LoadSuccessEvent());
-            
             return Container(
               child: Text(
                 "Hello?"

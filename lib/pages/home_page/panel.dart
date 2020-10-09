@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class Panel extends StatefulWidget {
-  
   final String route;
   final List<Widget> items;
   
@@ -21,21 +20,21 @@ class _PanelState extends State<Panel> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: GestureDetector(
-        onTap: _goToRoute,
-        child: Container(
-          decoration: BoxDecoration(color: Colors.teal),
-          child: Column(
-            children: [
-              Text(
-                widget.route
-              ),
-              ...widget.items,
-            ],
+        child: GestureDetector(
+          onTap: _goToRoute,
+          child: Container(
+            decoration: BoxDecoration(color: Colors.teal),
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: widget.items.length,
+              itemBuilder: (BuildContext context, int index) {
+                Widget item = widget.items[index];
+                return item;
+              }
+            ),
           ),
         ),
-      ),
-    );
+      );
   }
 }
 
