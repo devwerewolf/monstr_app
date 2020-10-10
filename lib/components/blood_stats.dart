@@ -16,11 +16,19 @@ class _BloodStatsState extends State<BloodStats> {
   Widget build(BuildContext context) {
     Blood bloodProp = widget.blood;
     
-    return LinearPercentIndicator(
-      width: 150,
-      lineHeight: 20,
-      progressColor: Colors.red,
-      percent: bloodProp.percentageAmount,
+    return Column(
+      children: [
+        Text(
+          bloodProp.type
+        ),
+        LinearPercentIndicator(
+          width: 150,
+          lineHeight: 20,
+          progressColor: Colors.red,
+          percent: bloodProp.percentageAmount,
+          alignment: MainAxisAlignment.center,
+        ),
+      ],
     );
   }
 }

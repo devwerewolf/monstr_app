@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:monstr_app/data/blood_list.dart';
 import 'package:monstr_app/design/checkbox_input.dart';
-import 'package:monstr_app/design/full_size_container.dart';
 import 'package:monstr_app/models/blood.dart';
-import 'package:monstr_app/components/blood_stats.dart';
 
 class SurvivalPage extends StatefulWidget {
   @override
@@ -21,15 +19,23 @@ class _SurvivalPageState extends State<SurvivalPage> {
         switch (state.runtimeType) {
           case LoadSuccessState:
             var bloodList = (state as LoadSuccessState).bloodList;
-            var chosenBloodList = bloodList.where((blood) => blood.chosen).toList();
-            var bloodStatsList = chosenBloodList.map((bloodElement) => BloodStats(blood: bloodElement)).toList();
         
             return Scaffold(
-              body: Container(
-                child: Column(
-                  children: bloodStatsList
-                ),
-              )
+              body: ListView.builder(
+                padding: const EdgeInsets.all(8),
+                itemCount: bloodList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  Blood blood = bloodList[index];
+                  
+                  return CheckboxInput(
+                    text: blood.type,
+                    value: blood.chosen,
+                    onValueChanged: (bool newValue) {
+                      blood.chosen = newValue;
+                      BlocProvider.of<BloodListBloc>(context).add(UpdatedEvent(blood));
+                    },
+                  );
+                })
             );
           default:
             return Container(

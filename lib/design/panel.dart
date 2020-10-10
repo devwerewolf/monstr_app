@@ -7,7 +7,11 @@ class Panel extends StatefulWidget {
   final Color color;
   
   // TODO: Make items required?
-  Panel({Key key, @required this.route, this.items = const[], this.color = Colors.white}) : super(key: key);
+  Panel({Key key, 
+    @required this.route,
+    this.items = const[],
+    this.color = Colors.white
+  }) : super(key: key);
   
   @override
   _PanelState createState() => _PanelState();
