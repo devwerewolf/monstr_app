@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
                     Panel(
                       route: '/survival',
                       items: [
-                        ...bloodStatsList
+                        ...bloodStatsList,
                       ],
                     ),
                   ],

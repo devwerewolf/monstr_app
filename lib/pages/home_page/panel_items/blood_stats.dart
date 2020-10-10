@@ -15,8 +15,10 @@ class _BloodStatsState extends State<BloodStats> {
   @override
   Widget build(BuildContext context) {
     Blood blood = widget.blood;
+    var screenSize = MediaQuery.of(context).size;
     
     return Container(
+      width: screenSize.width,
       child: LinearPercentIndicator(
         width: 150,
         lineHeight: 20,

@@ -20,21 +20,18 @@ class _PanelState extends State<Panel> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-        child: GestureDetector(
-          onTap: _goToRoute,
-          child: Container(
-            decoration: BoxDecoration(color: Colors.teal),
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: widget.items.length,
-              itemBuilder: (BuildContext context, int index) {
-                Widget item = widget.items[index];
-                return item;
-              }
-            ),
+      child: GestureDetector(
+        onTap: _goToRoute,
+        child: Container(
+          decoration: BoxDecoration(color: Colors.teal),
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            physics: PageScrollPhysics(),
+            children: widget.items,
           ),
         ),
-      );
+      ),
+    );
   }
 }
 
