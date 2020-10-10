@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:monstr_app/design/full_size_container.dart';
 
 class Panel extends StatefulWidget {
   final String route;
@@ -19,6 +20,13 @@ class _PanelState extends State<Panel> {
   
   @override
   Widget build(BuildContext context) {
+    var panelItemList = widget.items.map((itemElement) {
+      return FullSizeContainer(
+        dimension: Dimension.width,
+        child: itemElement,
+      );
+    }).toList();
+    
     return Expanded(
       child: GestureDetector(
         onTap: _goToRoute,
@@ -27,7 +35,7 @@ class _PanelState extends State<Panel> {
           child: ListView(
             scrollDirection: Axis.horizontal,
             physics: PageScrollPhysics(),
-            children: widget.items,
+            children: panelItemList,
           ),
         ),
       ),
