@@ -24,14 +24,17 @@ class HomePage extends StatelessWidget {
                     // TODO: Panel data array
                     Panel(
                       route: '/cosmos',
+                      color: Colors.purple,
                       items: [],
                     ),
                     Panel(
                       route: '/love',
+                      color: Colors.green,
                       items: [],
                     ),
                     Panel(
                       route: '/survival',
+                      color: Colors.blue,
                       items: [
                         ...bloodStatsList,
                       ],

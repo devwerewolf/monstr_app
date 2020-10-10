@@ -20,7 +20,7 @@ class _BloodStatsState extends State<BloodStats> {
       width: 150,
       lineHeight: 20,
       progressColor: Colors.red,
-      percent: bloodProp.currentAmount / bloodProp.maxAmount,
+      percent: bloodProp.percentageAmount,
     );
   }
 }

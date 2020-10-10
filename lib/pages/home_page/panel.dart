@@ -4,9 +4,10 @@ import 'package:monstr_app/design/full_size_container.dart';
 class Panel extends StatefulWidget {
   final String route;
   final List<Widget> items;
+  final Color color;
   
   // TODO: Make items required?
-  Panel({Key key, @required this.route, this.items = const[]}) : super(key: key);
+  Panel({Key key, @required this.route, this.items = const[], this.color = Colors.white}) : super(key: key);
   
   @override
   _PanelState createState() => _PanelState();
@@ -31,7 +32,7 @@ class _PanelState extends State<Panel> {
       child: GestureDetector(
         onTap: _goToRoute,
         child: Container(
-          decoration: BoxDecoration(color: Colors.teal),
+          decoration: BoxDecoration(color: widget.color),
           child: ListView(
             scrollDirection: Axis.horizontal,
             physics: PageScrollPhysics(),
