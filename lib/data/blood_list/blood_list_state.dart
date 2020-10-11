@@ -13,9 +13,9 @@ class LoadSuccessState extends BloodListState {
   // TODO: Look up List (de?)constructors for my own educational benefit
   const LoadSuccessState([this.bloodList = const[]]);
   
-  // [DEBUG]
-  @override
-  String toString() => 'LoadSuccess : { bloodList: $bloodList }';
+  // // [DEBUG]
+  // @override
+  // String toString() => 'LoadSuccess : { bloodList: $bloodList }';
 }
 
 class LoadFailureState extends BloodListState {}

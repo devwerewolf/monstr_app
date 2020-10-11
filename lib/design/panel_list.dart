@@ -72,7 +72,3 @@ class _PanelListState extends State<PanelList> {
     );
   }
 }
-
-// State
-// - "onClick" equivalent => goes to respective page (e.g. "Cosmos" panel -> "Cosmos" page)
-// - Renders provided data (e.g. "Food") in PanelItems which scroll

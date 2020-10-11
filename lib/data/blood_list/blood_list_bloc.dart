@@ -40,14 +40,13 @@ class BloodListBloc extends Bloc<BloodListEvent, BloodListState> {
   Stream<BloodListState> _mapUpdated(UpdatedEvent event) async* {
     if (state is LoadSuccessState) {
       var bloodList = (state as LoadSuccessState).bloodList;
+      // TODO: Figure out a cleaner way to change one item based on id
       var updatedBloodList = 
         bloodList
-        .map(
-          (currentBlood) {
+        .map((currentBlood) {
             if (currentBlood.id == event.blood.id) return event.blood;
             else return currentBlood;
-          }
-        )
+        })
         .toList();
       
       yield LoadSuccessState(updatedBloodList);
