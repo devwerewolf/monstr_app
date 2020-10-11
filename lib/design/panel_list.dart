@@ -2,15 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:monstr_app/design/full_size_container.dart';
 import 'package:monstr_app/design/panel.dart';
 
+enum PanelListRender {
+  Row,
+  Column,
+  Scroll,
+}
+
 class PanelList extends StatefulWidget {
   final String route;
   final List<Widget> items;
   final Color color;
+  final PanelListRender render;
   
-  PanelList({Key key, 
-    @required this.route,
+  PanelList({Key key,
+    this.route,
     this.items = const[],
     this.color = Colors.white,
+    this.render = PanelListRender.Scroll
   }) : super(key: key);
   
   @override
@@ -25,22 +33,41 @@ class _PanelListState extends State<PanelList> {
   
   @override
   Widget build(BuildContext context) {
-    var panelItemList = widget.items.map((panelItem) => Panel(item: panelItem, color: widget.color)).toList();
+    var panelList = widget.items.map((panel) => Panel(item: panel, color: widget.color)).toList();
+    bool hasRoute = widget.route != null;
+    Widget childView;
     
-    if (panelItemList.isEmpty) {
-      panelItemList = [
+    // TODO: Decide whether or not to keep this; is this desired behavior?
+    if (panelList.isEmpty) {
+      panelList = [
         Panel(item: Container(), color: widget.color),
       ];
     }
     
-    return Expanded(
-      child: GestureDetector(
-        onTap: _goToRoute,
-        child: ListView(
+    switch (widget.render) {
+      case PanelListRender.Row:
+        childView = Row(
+          children: panelList,
+        );
+        break;
+      case PanelListRender.Column:
+        childView = Column(
+          children: panelList,
+        );
+        break;
+      case PanelListRender.Scroll:
+      default:
+        childView = ListView(
           scrollDirection: Axis.horizontal,
           physics: PageScrollPhysics(),
-          children: panelItemList,
-        ),
+          children: panelList,
+        );
+    }
+    
+    return Expanded(
+      child: GestureDetector(
+        onTap: hasRoute ? _goToRoute : () {},
+        child: childView,
       ),
     );
   }

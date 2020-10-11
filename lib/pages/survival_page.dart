@@ -32,10 +32,10 @@ class _SurvivalPageState extends State<SurvivalPage> {
                     Text(
                       "Blood"
                     ),
-                    ...bloodStatsList,  
-                  ]
+                    ...bloodStatsList,
+                  ],
                 ),
-              )
+              ),
             );
           default:
             return Container(
