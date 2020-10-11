@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:monstr_app/design/full_size_container.dart';
 import 'package:monstr_app/design/panel.dart';
 
 enum PanelListRender {
@@ -10,12 +9,14 @@ enum PanelListRender {
 
 class PanelList extends StatefulWidget {
   final String route;
+  final dynamic routeProps;
   final List<Widget> items;
   final Color color;
   final PanelListRender render;
   
   PanelList({Key key,
-    this.route,
+    @required this.route,
+    this.routeProps,
     this.items = const[],
     this.color = Colors.white,
     this.render = PanelListRender.Scroll
@@ -28,7 +29,7 @@ class PanelList extends StatefulWidget {
 class _PanelListState extends State<PanelList> {
   
   void _goToRoute() {
-    Navigator.pushNamed(context, widget.route);
+    Navigator.pushNamed(context, widget.route, arguments: widget.routeProps);
   }
   
   @override

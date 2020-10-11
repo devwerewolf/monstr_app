@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:monstr_app/data/blood_list.dart';
 import 'package:monstr_app/design/panel_list.dart';
 import 'package:monstr_app/components/blood_stats.dart';
+import 'package:monstr_app/pages/survival_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -31,9 +32,14 @@ class HomePage extends StatelessWidget {
                       
                     return PanelList(
                       route: '/survival',
+                      routeProps: SurvivalPageProps(hasBlood: bloodList.isNotEmpty),
                       color: Colors.orange,
                       items: bloodStatsList,
                     );
+                  case LoadInProgressState:
+                  default:
+                    BlocProvider.of<BloodListBloc>(context).add(LoadSuccessEvent());
+                    return Container();
                 }
               }
             ),
