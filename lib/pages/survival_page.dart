@@ -26,8 +26,14 @@ class _SurvivalPageState extends State<SurvivalPage> {
         
             return Scaffold(
               body: Container(
+                decoration: BoxDecoration(color: Colors.orange),
                 child: Column(
-                  children: bloodStatsList
+                  children: [
+                    Text(
+                      "Blood"
+                    ),
+                    ...bloodStatsList,  
+                  ]
                 ),
               )
             );

@@ -8,9 +8,10 @@ enum Dimension {
 
 class FullSizeContainer extends StatefulWidget {
   final Dimension dimension;
+  final BoxDecoration decoration;
   final Widget child;
   
-  FullSizeContainer({this.dimension = Dimension.width, this.child});
+  FullSizeContainer({this.dimension = Dimension.width, this.child, this.decoration});
   
   @override
   _FullSizeContainerState createState() => _FullSizeContainerState();
@@ -40,6 +41,7 @@ class _FullSizeContainerState extends State<FullSizeContainer> {
     return Container(
       width: width,
       height: height,
+      decoration: widget.decoration,
       child: widget.child,
     );
   }

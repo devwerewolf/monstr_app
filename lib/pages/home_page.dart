@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:monstr_app/data/blood_list.dart';
-import 'package:monstr_app/design/panel.dart';
+import 'package:monstr_app/design/panel_list.dart';
 import 'package:monstr_app/components/blood_stats.dart';
 
 class HomePage extends StatelessWidget {
@@ -21,25 +21,23 @@ class HomePage extends StatelessWidget {
                 child: Column(
                   // TODO: Figure out if alignment supercedes the need for a Center component
                   crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Panel>[
+                  children: <PanelList>[
                     // TODO: Panel data array
-                    Panel(
+                    PanelList(
                       route: '/cosmos',
                       color: Colors.purple,
-                      items: [],
+                      // items: bloodStatsList,
                     ),
-                    Panel(
+                    PanelList(
                       route: '/love',
                       color: Colors.green,
-                      items: [],
+                      // items: bloodStatsList,
                     ),
-                    Panel(
+                    PanelList(
                       // TODO: Make the title dynamic for different food/transform types?
                       route: '/survival',
                       color: Colors.orange,
-                      items: [
-                        ...bloodStatsList,
-                      ],
+                      items: bloodStatsList,
                     ),
                   ],
                 ),
