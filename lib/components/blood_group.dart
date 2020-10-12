@@ -12,8 +12,6 @@ class BloodGroup extends StatefulWidget {
 }
 
 class _BloodGroupState extends State<BloodGroup> {
-  bool _edit = false;
-  
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<BloodListBloc, BloodListState>(
@@ -22,7 +20,7 @@ class _BloodGroupState extends State<BloodGroup> {
           case LoadSuccessState:
             var bloodList = (state as LoadSuccessState).bloodList;
             var chosenBloodList = bloodList.where((blood) => blood.chosen).toList();
-            var bloodStatsList = chosenBloodList.map((bloodElement) => BloodStats(blood: bloodElement)).toList();
+            var bloodStatsList = chosenBloodList.map((blood) => BloodStats(blood: blood)).toList();
             
             return Column(
               children: [

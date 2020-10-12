@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:monstr_app/components/blood_group.dart';
 
+// TODO: Do I need SurvivalPageProps anymore? Do routes need params right now?
 class SurvivalPageProps {
   final bool hasBlood;
   
-  SurvivalPageProps({this.hasBlood = true});
+  SurvivalPageProps({this.hasBlood = false});
 }
 
 class SurvivalPage extends StatefulWidget {
@@ -16,19 +17,24 @@ class _SurvivalPageState extends State<SurvivalPage> {
   
   @override
   Widget build(BuildContext context) {
-    final SurvivalPageProps routeProps = ModalRoute.of(context).settings.arguments;
+    // final SurvivalPageProps routeProps = ModalRoute.of(context).settings.arguments;
     
-    List<Widget> foodGroups = [];
+    // // TODO: Arrange foodGroups in the user's preferred order
+    // List<Widget> foodGroups = [];
     
-    if (routeProps.hasBlood) {
-      foodGroups.add(BloodGroup());
-    }
+    // if (routeProps.hasBlood) {
+    //   foodGroups.add(BloodGroup());
+    // }
     
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(color: Colors.orange),
         child: Column(
-          children: foodGroups,
+          children: [
+            BloodGroup(),
+            BloodGroup(),
+            BloodGroup(),
+          ],
         ),
       ),
     );

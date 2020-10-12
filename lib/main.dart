@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:monstr_app/data/bloc.dart';
+import 'package:monstr_app/data/blood_list/blood_list_bloc.dart';
+import 'package:monstr_app/data/monstr_observer.dart';
+
 import 'package:monstr_app/pages/cosmos_page.dart';
 import 'package:monstr_app/pages/home_page.dart';
 import 'package:monstr_app/pages/love_page.dart';

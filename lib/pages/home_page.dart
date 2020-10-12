@@ -22,14 +22,15 @@ class HomePage extends StatelessWidget {
               color: Colors.green,
               // items: bloodStatsList,
             ),
+            // TODO: Separate each Home Page PanelList into its own component
             BlocBuilder<BloodListBloc, BloodListState>(
               builder: (context, state) {
                 switch (state.runtimeType) {
                   case LoadSuccessState:
                     var bloodList = (state as LoadSuccessState).bloodList.toList();
                     var chosenBloodList = bloodList.where((blood) => blood.chosen).toList();
-                    var bloodStatsList = chosenBloodList.map((bloodElement) => BloodStats(blood: bloodElement)).toList();
-                      
+                    var bloodStatsList = chosenBloodList.map((blood) => BloodStats(blood: blood)).toList();
+                    
                     return PanelList(
                       route: '/survival',
                       routeProps: SurvivalPageProps(hasBlood: bloodList.isNotEmpty),
