@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:monstr_app/data/blood_list.dart';
 import 'package:monstr_app/design/panel.dart';
 import 'package:monstr_app/design/panel_list.dart';
 import 'package:monstr_app/components/blood_stats.dart';
