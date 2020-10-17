@@ -4,16 +4,29 @@ import 'package:monstr_app/components/blood_stats.dart';
 import 'package:monstr_app/data/blood_list.dart';
 import 'package:monstr_app/models/blood.dart';
 
+BloodListBloc _bloodListBloc(BuildContext context) {
+  return BlocProvider.of<BloodListBloc>(context);
+}
+
 void initBloodList(BuildContext context) {
   // TODO: Make smarter
-  BlocProvider.of<BloodListBloc>(context).add(LoadSuccessEvent());
+  _bloodListBloc(context).add(LoadSuccessEvent());
+}
+
+void updateBloodList(BuildContext context, Blood blood) {
+  _bloodListBloc(context).add(UpdatedEvent(blood));
 }
 
 List<Blood> fetchBloodList(BuildContext context) {
-  var state = BlocProvider.of<BloodListBloc>(context).state;
-  var bloodList = (state as LoadSuccessState).bloodList;
+  var state = _bloodListBloc(context).state;
   
-  return bloodList;
+  switch (state.runtimeType) {
+    case LoadSuccessState:
+      var bloodList = (state as LoadSuccessState).bloodList;
+      return bloodList;
+    case LoadInProgressState:
+      return [];
+  }
 }
 
 List<BloodStats> fetchBloodStatsList(BuildContext context) {

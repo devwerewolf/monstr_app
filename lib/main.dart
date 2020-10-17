@@ -9,6 +9,7 @@ import 'package:monstr_app/pages/cosmos_page.dart';
 import 'package:monstr_app/pages/home_page.dart';
 import 'package:monstr_app/pages/love_page.dart';
 import 'package:monstr_app/pages/survival_page.dart';
+import 'package:monstr_app/pages/survival_settings_page.dart';
 import 'package:monstr_app/utils/blood_list_utils.dart';
 
 void main() {
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
         '/cosmos': (context) => CosmosPage(),
         '/love': (context) => LovePage(),
         '/survival': (context) => SurvivalPage(),
+        '/survival/settings': (context) => SurvivalSettingsPage(),
       },
       initialRoute: '/',
     );
