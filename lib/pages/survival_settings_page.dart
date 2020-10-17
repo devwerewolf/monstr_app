@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:monstr_app/data/blood_list.dart';
 import 'package:monstr_app/design/checkbox_input.dart';
 import 'package:monstr_app/models/blood.dart';
 import 'package:monstr_app/utils/blood_list_utils.dart';
