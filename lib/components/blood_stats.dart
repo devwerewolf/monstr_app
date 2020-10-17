@@ -5,7 +5,7 @@ import 'package:percent_indicator/percent_indicator.dart';
 class BloodStats extends StatefulWidget {
   final Blood blood;
   
-  BloodStats(@required this.blood);
+  BloodStats(this.blood);
   
   @override
   _BloodStatsState createState() => _BloodStatsState();

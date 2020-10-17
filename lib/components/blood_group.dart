@@ -10,18 +10,6 @@ class BloodGroup extends StatefulWidget {
 class _BloodGroupState extends State<BloodGroup> {
   @override
   Widget build(BuildContext context) {
-    // var bloodStatsList = fetchBloodStatsList(context);
-    // print(bloodStatsList);
-    
-    // return Column(
-    //   children: [
-    //     Text(
-    //       "Blood"
-    //     ),
-    //     ...bloodStatsList,
-    //   ],
-    // );
-    
     return BloodListRender(
       render: (bloodList) {
         var chosenBloodList = bloodList.where((blood) => blood.chosen);

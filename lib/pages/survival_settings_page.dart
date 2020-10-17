@@ -32,28 +32,3 @@ class SurvivalSettingsPage extends StatelessWidget {
     );
   }
 }
-
-// BlocBuilder<BloodListBloc, BloodListState>(
-//         builder: (context, state) {
-//           switch (state.runtimeType) {
-//             case LoadSuccessState:
-//               var bloodList = (state as LoadSuccessState).bloodList;
-//               return ListView.builder(
-//                 padding: const EdgeInsets.all(8),
-//                 itemCount: bloodList.length,
-//                 itemBuilder: (context, index) {
-//                   Blood blood = bloodList[index];
-                  
-//                   return CheckboxInput(
-//                     text: blood.type,
-//                     value: blood.chosen,
-//                     onValueChanged: (bool newValue) {
-//                       blood.chosen = newValue;
-//                       updateBloodList(context, blood);
-//                     },
-//                   );
-//                 },
-//               );
-//           }
-//         }
-//       ),
