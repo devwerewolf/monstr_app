@@ -25,8 +25,8 @@ class SurvivalSettingsPage extends StatelessWidget {
               );
             },
           );
-        } ,
-      )
+        }
+      ),
     );
   }
 }

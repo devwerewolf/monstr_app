@@ -8,8 +8,8 @@ class LovePage extends StatefulWidget {
 class _LovePageState extends State<LovePage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return Scaffold(
+      body: Column(),
     );
   }
 }
