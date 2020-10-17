@@ -16,18 +16,6 @@ void updateBloodList(BuildContext context, Blood blood) {
   _bloodListBloc(context).add(UpdatedEvent(blood));
 }
 
-BlocBuilder renderBloodList({Widget child}) {
-  return BlocBuilder<BloodListBloc, BloodListState>(
-    builder: (context, state) {
-      switch (state.runtimeType) {
-        case LoadSuccessState:
-          var bloodList = (state as LoadSuccessState).bloodList;
-          return child;
-      }
-    },
-  );
-}
-
 // ---------------------
 
 class BloodListRender extends StatefulWidget {
