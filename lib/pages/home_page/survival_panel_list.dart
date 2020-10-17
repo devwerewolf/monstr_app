@@ -1,19 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:monstr_app/design/panel.dart';
 import 'package:monstr_app/design/panel_list.dart';
-import 'package:monstr_app/components/blood_stats.dart';
 import 'package:monstr_app/utils/blood_list_utils.dart';
 
 class SurvivalPanelList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const panelColor = Colors.orange;
-    
-    initBloodList(context);
-    
-    var bloodList = fetchBloodList(context);
-    var chosenBloodList = bloodList.where((blood) => blood.chosen);
-    var bloodStatsList = chosenBloodList.map((blood) => BloodStats(blood: blood,));
+    var bloodStatsList = fetchBloodStatsList(context);
     
     // TODO: Put more shit in the list
     var aggregateList = [...bloodStatsList];
@@ -21,8 +15,8 @@ class SurvivalPanelList extends StatelessWidget {
     
     return PanelList(
       route: "/survival",
+      color: panelColor,
       items: panelItems,
-      color: panelColor
     );
   }
 }

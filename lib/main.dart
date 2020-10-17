@@ -9,6 +9,7 @@ import 'package:monstr_app/pages/cosmos_page.dart';
 import 'package:monstr_app/pages/home_page.dart';
 import 'package:monstr_app/pages/love_page.dart';
 import 'package:monstr_app/pages/survival_page.dart';
+import 'package:monstr_app/utils/blood_list_utils.dart';
 
 void main() {
   Bloc.observer = MonstrObserver();
@@ -16,9 +17,7 @@ void main() {
   runApp(
     MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => BloodListBloc(),
-        ),
+        BlocProvider(create: (context) => BloodListBloc(),),
       ],
       child: MyApp(),
     ),
@@ -28,6 +27,8 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    initBloodList(context);
+    
     SystemChrome.setEnabledSystemUIOverlays([]);
     
     return MaterialApp(
