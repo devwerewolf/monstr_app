@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:monstr_app/components/blood_stats.dart';
 import 'package:monstr_app/utils/blood_list_utils.dart';
 
 class BloodGroup extends StatefulWidget {
@@ -9,15 +10,32 @@ class BloodGroup extends StatefulWidget {
 class _BloodGroupState extends State<BloodGroup> {
   @override
   Widget build(BuildContext context) {
-    var bloodStatsList = fetchBloodStatsList(context);
+    // var bloodStatsList = fetchBloodStatsList(context);
+    // print(bloodStatsList);
     
-    return Column(
-      children: [
-        Text(
-          "Blood"
-        ),
-        ...bloodStatsList,
-      ],
+    // return Column(
+    //   children: [
+    //     Text(
+    //       "Blood"
+    //     ),
+    //     ...bloodStatsList,
+    //   ],
+    // );
+    
+    return BloodListRender(
+      render: (bloodList) {
+        var chosenBloodList = bloodList.where((blood) => blood.chosen);
+        var bloodStatsList = chosenBloodList.map((chosenBlood) => BloodStats(chosenBlood));
+        
+        return Column(
+          children: [
+            Text(
+              "Blood"
+            ),
+            ...bloodStatsList
+          ],
+        );
+      },
     );
   }
 }

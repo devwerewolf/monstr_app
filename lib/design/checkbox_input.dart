@@ -38,7 +38,7 @@ class _CheckboxInputState extends State<CheckboxInput> {
             child: Checkbox(
               onChanged: (bool newValue) { _changeValue(newValue); },
               tristate: false,
-              value: value,
+              value: _value,
             ),
           ),
           Text(
