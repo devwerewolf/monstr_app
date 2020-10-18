@@ -1,6 +1,8 @@
 import 'dart:async';
-import 'package:time/time.dart';
+import 'package:daylight/daylight.dart';
 import 'package:flutter/material.dart';
+import 'package:time/time.dart';
+import 'package:flutter_suncalc/flutter_suncalc.dart';
 
 class SunMoonCycle extends StatefulWidget {
   final BuildContext context;
@@ -13,18 +15,33 @@ class SunMoonCycle extends StatefulWidget {
 
 class _SunMoonCycleState extends State<SunMoonCycle> {
   Timer _timer;
-  DateTime now = DateTime.now();
+  DateTime _now = DateTime.now().toUtc();
   
   bool get isCurrentRoute => ModalRoute.of(widget.context).isCurrent;
+  
+  DaylightLocation get losAngeles => DaylightLocation(34.0522, 118.2437);
+  DaylightCalculator get losAngelesCalculator => DaylightCalculator(losAngeles);
+  DateTime get sunrise => losAngelesCalculator.calculateEvent(
+    _now,
+    Zenith.golden,
+    EventType.sunrise,
+  ).toUtc();
+  DateTime get sunset => losAngelesCalculator.calculateEvent(
+    _now,
+    Zenith.golden,
+    EventType.sunset,
+  ).toLocal();
+  
+  DateTime get rightNow => _now.toLocal();
+  bool get isPastSunrise => rightNow.isAfter(sunrise);
+  bool get isPastSunset => rightNow.isAfter(sunset);
   
   @override
   void initState() {
     _timer = Timer.periodic(1.seconds, (timer) {
-      // Check if still on that route
       if (isCurrentRoute) {
         setState(() {
-          now = DateTime.now();
-          print(now);
+          _now = DateTime.now().toUtc();
         });
       }
     });
@@ -40,8 +57,19 @@ class _SunMoonCycleState extends State<SunMoonCycle> {
   
   @override
   Widget build(BuildContext context) {
+    String dummyText = "Sun Moon Cycle 🐺";
+    
+    if (isPastSunrise) {
+      dummyText = "RISE AND SHINE, BITCH!";
+    }
+    
+    if (isPastSunset) {
+      dummyText = "GO TO BED, NERD!";
+    }
+    
     return Text(
-      now.toString()
+      // dummyText
+      "${sunset.difference(rightNow)} | $sunset | $isPastSunset"
     );
   }
 }
