@@ -9,14 +9,12 @@ enum PanelListRender {
 
 class PanelList extends StatefulWidget {
   final String route;
-  final dynamic routeProps;
   final List<Widget> items;
   final Color color;
   final PanelListRender render;
   
   PanelList({Key key,
     @required this.route,
-    this.routeProps,
     this.items = const[],
     this.color = Colors.white,
     this.render = PanelListRender.Scroll
@@ -29,7 +27,8 @@ class PanelList extends StatefulWidget {
 class _PanelListState extends State<PanelList> {
   
   void _goToRoute() {
-    Navigator.pushNamed(context, widget.route, arguments: widget.routeProps);
+    Navigator.pushNamed(context, widget.route);
+    // Navigator.pushReplacementNamed(context, widget.route);
   }
   
   @override

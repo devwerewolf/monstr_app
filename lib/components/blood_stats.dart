@@ -14,18 +14,16 @@ class BloodStats extends StatefulWidget {
 class _BloodStatsState extends State<BloodStats> {
   @override
   Widget build(BuildContext context) {
-    Blood bloodProp = widget.blood;
-    
     return Column(
       children: [
         Text(
-          bloodProp.type
+          widget.blood.type
         ),
         LinearPercentIndicator(
           width: 150,
           lineHeight: 20,
           progressColor: Colors.red,
-          percent: bloodProp.percentageAmount,
+          percent: widget.blood.percentageAmount,
           alignment: MainAxisAlignment.center,
         ),
       ],
