@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:monstr_app/design/full_size_container.dart';
 
 class CosmosPage extends StatefulWidget {
   @override
@@ -9,7 +10,9 @@ class _CosmosPageState extends State<CosmosPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(),
+      body: FullSizeContainer(
+        decoration: BoxDecoration(color: Colors.purple),
+      ),
     );
   }
 }

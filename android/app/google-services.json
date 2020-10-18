@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "660495046101",
+    "firebase_url": "https://werewolf-den.firebaseio.com",
+    "project_id": "werewolf-den",
+    "storage_bucket": "werewolf-den.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:660495046101:android:4a04962b19ef2fe6e3195c",
+        "android_client_info": {
+          "package_name": "com.example.monstr_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "660495046101-epv1a87mgo8ed49ge768kfa6rmp8ivjt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDifuhLPpl9Ane01zd10b8CAcEvthCI98w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "660495046101-epv1a87mgo8ed49ge768kfa6rmp8ivjt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
