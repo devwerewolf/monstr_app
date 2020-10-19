@@ -10,4 +10,8 @@ class Affirmation {
     text = data["text"];
     category = data["category"];
   }
+  
+  static List<Affirmation> list(List<DocumentSnapshot> documentSnapshots) {
+    return documentSnapshots.map((documentSnapshot) => Affirmation.fromSnapshot(documentSnapshot)).toList();
+  }
 }
