@@ -69,7 +69,7 @@ class _SunMoonCycleState extends State<SunMoonCycle> {
     
     return Text(
       // dummyText
-      "$rightNow | ${sunset.toLocal()} | $isPastSunset"
+      "$dummyText | $rightNow | ${sunset.toLocal()} | $isPastSunset"
     );
   }
 }
