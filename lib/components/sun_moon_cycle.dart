@@ -18,21 +18,21 @@ class _SunMoonCycleState extends State<SunMoonCycle> {
   DateTime _now = DateTime.now().toUtc();
   
   bool get isCurrentRoute => ModalRoute.of(widget.context).isCurrent;
+  DateTime get rightNow => _now.toLocal();
   
-  DaylightLocation get losAngeles => DaylightLocation(34.0522, 118.2437);
+  DaylightLocation get losAngeles => DaylightLocation(39.833, -98.583);
   DaylightCalculator get losAngelesCalculator => DaylightCalculator(losAngeles);
   DateTime get sunrise => losAngelesCalculator.calculateEvent(
-    _now,
+    rightNow,
     Zenith.golden,
     EventType.sunrise,
   );
   DateTime get sunset => losAngelesCalculator.calculateEvent(
-    _now,
+    rightNow,
     Zenith.golden,
     EventType.sunset,
   );
   
-  DateTime get rightNow => _now.toLocal();
   bool get isPastSunrise => rightNow.isAfter(sunrise);
   bool get isPastSunset => rightNow.isAfter(sunset);
   
@@ -69,7 +69,7 @@ class _SunMoonCycleState extends State<SunMoonCycle> {
     
     return Text(
       // dummyText
-      "${sunset.difference(rightNow)} | $sunset | $isPastSunset"
+      "$rightNow | ${sunset.toLocal()} | $isPastSunset"
     );
   }
 }
