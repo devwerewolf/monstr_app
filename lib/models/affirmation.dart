@@ -5,6 +5,7 @@ class Affirmation {
   String category;
   
   Affirmation({this.text, this.category});
+  
   Affirmation.fromSnapshot(DocumentSnapshot documentSnapshot) {
     var data = documentSnapshot.data;
     text = data["text"];
