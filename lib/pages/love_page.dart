@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:monstr_app/design/firestore_collection.dart';
 import 'package:monstr_app/design/full_size_container.dart';

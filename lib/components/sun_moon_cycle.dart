@@ -1,6 +1,8 @@
 import 'dart:async';
-import 'package:daylight/daylight.dart';
+import 'dart:math';
+// import 'package:daylight/daylight.dart';
 import 'package:flutter/material.dart';
+import 'package:monstr_app/constants/suncalc_offset.dart';
 import 'package:time/time.dart';
 import 'package:flutter_suncalc/flutter_suncalc.dart';
 
@@ -15,23 +17,21 @@ class SunMoonCycle extends StatefulWidget {
 
 class _SunMoonCycleState extends State<SunMoonCycle> {
   Timer _timer;
-  DateTime _now = DateTime.now().toUtc();
+  DateTime _now = DateTime.now();
+  Map<String, DateTime> _sunTimes = Map();
+  Map<String, num> _sunPositions = Map();
+  Map<String, DateTime> _moonTimes = Map();
+  Map<String, num> _moonPositions = Map();
+  num _lat = 39.833;
+  num _long = -98.583;
   
   bool get isCurrentRoute => ModalRoute.of(widget.context).isCurrent;
   DateTime get rightNow => _now.toLocal();
   
-  DaylightLocation get losAngeles => DaylightLocation(39.833, -98.583);
-  DaylightCalculator get losAngelesCalculator => DaylightCalculator(losAngeles);
-  DateTime get sunrise => losAngelesCalculator.calculateEvent(
-    rightNow,
-    Zenith.astronomical,
-    EventType.sunrise,
-  );
-  DateTime get sunset => losAngelesCalculator.calculateEvent(
-    rightNow,
-    Zenith.astronomical,
-    EventType.sunset,
-  );
+  DateTime get sunrise => _sunTimes["sunrise"].add(sunriseOffset).toLocal();
+  DateTime get sunset => _sunTimes["sunset"].add(sunsetOffset).toLocal();
+  num get sunAltitude => _sunPositions["altitude"];
+  num get sunImageFromBottom => 128 * sin(sunAltitude) - 256;
   
   bool get isPastSunrise => rightNow.isAfter(sunrise);
   bool get isPastSunset => rightNow.isAfter(sunset);
@@ -42,6 +42,8 @@ class _SunMoonCycleState extends State<SunMoonCycle> {
       if (isCurrentRoute) {
         setState(() {
           _now = DateTime.now().toUtc();
+          _sunTimes = SunCalc.getTimes(_now, _lat, _long);
+          _sunPositions = SunCalc.getPosition(_now, _lat, _long);
         });
       }
     });
@@ -60,21 +62,34 @@ class _SunMoonCycleState extends State<SunMoonCycle> {
     String dummyText = "Sun Moon Cycle 🐺";
     
     if (isPastSunrise) {
-      dummyText = "RISE AND SHINE, BITCH!";
+      dummyText = "RISE AND SHINE, NERD!";
     }
     
     if (isPastSunset) {
       dummyText = "GO TO BED, NERD!";
     }
     
-    var date = DateTime.now();
-    var times = SunCalc.getTimes(date, 39.833, -98.583);
+    print("$rightNow | $_sunPositions | ${sin(sunAltitude)}");
     
-    print("$_now | $times");
-    
-    return Text(
-      // dummyText
-      "$dummyText | $rightNow | ${sunset.toLocal()} | $isPastSunset | ${times["sunset"].toLocal().add(1.hours + 23.minutes + 20.seconds)}"
+    return Center(
+      child: Stack(
+        children: [
+          Positioned(
+            top: 10,
+            child: Text(
+              "$dummyText | $sunAltitude"
+            ),
+          ),
+          Positioned.fill(
+            bottom: sunImageFromBottom,
+            child: Center(
+              child: Image.asset(
+                "assets/sun.png"
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
