@@ -5,7 +5,7 @@ class FirestoreCollection extends StatefulWidget {
   final String path;
   final Function(List<DocumentSnapshot> documentSnapshots) render;
   
-  FirestoreCollection(this.path, {this.render});
+  FirestoreCollection({this.path, this.render});
   
   @override
   _FirestoreCollectionState createState() => _FirestoreCollectionState();

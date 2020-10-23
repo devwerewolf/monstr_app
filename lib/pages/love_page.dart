@@ -15,7 +15,8 @@ class _LovePageState extends State<LovePage> {
     return Scaffold(
       body: FullSizeContainer(
         decoration: BoxDecoration(color: Colors.green),
-        child: FirestoreCollection("affirmations",
+        child: FirestoreCollection(
+          path: "affirmations",
           render: (documentSnapshots) {
             var affirmations = Affirmation.list(documentSnapshots);
             

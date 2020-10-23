@@ -9,7 +9,8 @@ class LovePanelList extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: Construct the widget from data
     
-    return FirestoreCollection("affirmations",
+    return FirestoreCollection(
+      path: "affirmations",
       render: (documentSnapshots) {
         const panelColor = Colors.green;
         var affirmations = Affirmation.list(documentSnapshots);

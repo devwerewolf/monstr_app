@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:daylight/daylight.dart';
 import 'package:flutter/material.dart';
 import 'package:time/time.dart';
-// import 'package:flutter_suncalc/flutter_suncalc.dart';
+import 'package:flutter_suncalc/flutter_suncalc.dart';
 
 class SunMoonCycle extends StatefulWidget {
   final BuildContext context;
@@ -24,12 +24,12 @@ class _SunMoonCycleState extends State<SunMoonCycle> {
   DaylightCalculator get losAngelesCalculator => DaylightCalculator(losAngeles);
   DateTime get sunrise => losAngelesCalculator.calculateEvent(
     rightNow,
-    Zenith.golden,
+    Zenith.astronomical,
     EventType.sunrise,
   );
   DateTime get sunset => losAngelesCalculator.calculateEvent(
     rightNow,
-    Zenith.golden,
+    Zenith.astronomical,
     EventType.sunset,
   );
   
@@ -67,9 +67,14 @@ class _SunMoonCycleState extends State<SunMoonCycle> {
       dummyText = "GO TO BED, NERD!";
     }
     
+    var date = DateTime.now();
+    var times = SunCalc.getTimes(date, 39.833, -98.583);
+    
+    print("$_now | $times");
+    
     return Text(
       // dummyText
-      "$dummyText | $rightNow | ${sunset.toLocal()} | $isPastSunset"
+      "$dummyText | $rightNow | ${sunset.toLocal()} | $isPastSunset | ${times["sunset"].toLocal().add(1.hours + 23.minutes + 20.seconds)}"
     );
   }
 }
