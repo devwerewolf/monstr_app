@@ -3,6 +3,7 @@ import 'dart:math';
 // import 'package:daylight/daylight.dart';
 import 'package:flutter/material.dart';
 import 'package:monstr_app/constants/suncalc_offset.dart';
+import 'package:monstr_app/design/full_size_container.dart';
 import 'package:time/time.dart';
 import 'package:flutter_suncalc/flutter_suncalc.dart';
 
@@ -35,6 +36,9 @@ class _SunMoonCycleState extends State<SunMoonCycle> {
   
   bool get isPastSunrise => rightNow.isAfter(sunrise);
   bool get isPastSunset => rightNow.isAfter(sunset);
+  bool get isMorning => !isPastSunrise && sunAltitude <= PI/2;
+  bool get isAfternoon => isPastSunrise && sunAltitude >= 0;
+  bool get isEvening => sunAltitude <= 0;
   
   @override
   void initState() {
@@ -62,34 +66,45 @@ class _SunMoonCycleState extends State<SunMoonCycle> {
     String dummyText = "Sun Moon Cycle 🐺";
     
     if (isPastSunrise) {
-      dummyText = "RISE AND SHINE, NERD!";
+      dummyText = "Rise and shine, nerd!";
     }
     
     if (isPastSunset) {
-      dummyText = "GO TO BED, NERD!";
+      dummyText = "Go to bed, nerd!";
+    }
+    
+    if (isAfternoon) {
+      dummyText = "L U N C H";
     }
     
     print("$rightNow | $_sunPositions | ${sin(sunAltitude)}");
     
-    return Center(
-      child: Stack(
-        children: [
-          Positioned(
-            top: 10,
-            child: Text(
-              "$dummyText | $sunAltitude"
+    return Stack(
+      children: [
+        // TODO: Polish by using an AnimatedPositioned
+        // - Set the duration for 1 second
+        // - Use a linear animation curve
+        Positioned.fill(
+          bottom: sunImageFromBottom,
+          child: Center(
+            child: Image.asset(
+              "assets/sun.png"
             ),
           ),
-          Positioned.fill(
-            bottom: sunImageFromBottom,
-            child: Center(
-              child: Image.asset(
-                "assets/sun.png"
+        ),
+        Positioned.fill(
+          child: Center(
+            child: Text(
+              "$dummyText | $sunAltitude",
+              style: TextStyle(
+                fontFamily: "Grenze",
+                fontSize: 30,
+                backgroundColor: Color.fromARGB(128, 255, 255, 255),
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

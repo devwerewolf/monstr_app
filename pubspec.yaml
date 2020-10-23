@@ -57,7 +57,14 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
-  - assets/sun.png
+    - assets/sun.png
+  
+  fonts:
+    - family: Grenze
+      fonts:
+        - asset: assets/GrenzeGotisch-Regular.ttf
+        - asset: assets/GrenzeGotisch-Bold.ttf
+        - asset: assets/GrenzeGotisch-ExtraLight.ttf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
