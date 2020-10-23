@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:monstr_app/components/title_text.dart';
+import 'package:monstr_app/design/custom_text.dart';
 import 'package:monstr_app/design/firestore_collection.dart';
 import 'package:monstr_app/design/panel.dart';
 import 'package:monstr_app/design/panel_list.dart';
@@ -16,10 +17,14 @@ class LovePanelList extends StatelessWidget {
         const panelColor = Colors.green;
         var affirmations = Affirmation.list(documentSnapshots);
         var affirmationWidgets = affirmations.map((affirmation) {
-          return Center(
-            child: TitleText(
-              text: affirmation.text
-            ),
+          // return TitleText(
+          //   text: affirmation.text
+          // );
+          
+          return CustomText(
+            affirmation.text,
+            size: Titles[0],
+            centered: true,
           );
         });
         List<Panel> panelItems = affirmationWidgets.map((widget) => Panel(item: widget, color: panelColor)).toList();

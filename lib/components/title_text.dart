@@ -16,8 +16,9 @@ class _TitleTextState extends State<TitleText> {
       widget.text,
       style: TextStyle(
         fontFamily: "Grenze",
-        fontSize: 30,
+        fontSize: 40,
       ),
+      textAlign: TextAlign.center,
     );
   }
 }

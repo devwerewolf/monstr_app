@@ -94,10 +94,8 @@ class _SunMoonCycleState extends State<SunMoonCycle> {
           ),
         ),
         Positioned.fill(
-          child: Center(
-            child: TitleText(
-              text: "$dummyText | $sunAltitude",
-            ),
+          child: TitleText(
+            text: "$dummyText | $sunAltitude",
           ),
         ),
       ],
