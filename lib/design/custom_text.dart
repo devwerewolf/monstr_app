@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const List<double> Titles = [
+const List<double> Titles = const [
   40,
   30,
   20,
@@ -14,7 +14,7 @@ class CustomText extends StatefulWidget {
   final num size;
   final bool centered;
   
-  CustomText(this.text, {this.size, this.centered = false});
+  CustomText(this.text, {this.size = 15, this.centered = false});
   
   @override
   _CustomTextState createState() => _CustomTextState();

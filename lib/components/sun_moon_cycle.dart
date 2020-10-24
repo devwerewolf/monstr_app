@@ -75,7 +75,11 @@ class _SunMoonCycleState extends State<SunMoonCycle> {
     }
     
     if (isAfternoon) {
-      dummyText = "L U N C H";
+      dummyText = "Lunch!";
+    }
+    
+    if (isEvening) {
+      dummyText = "Dinner!";
     }
     
     print("$rightNow | $_sunPositions | ${sin(sunAltitude)}");
