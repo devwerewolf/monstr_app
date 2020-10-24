@@ -57,10 +57,13 @@ class _PanelListState extends State<PanelList> {
         break;
       case PanelListRender.Scroll:
       default:
-        childView = ListView(
-          scrollDirection: Axis.horizontal,
-          physics: PageScrollPhysics(),
-          children: panelList,
+        childView = Center(
+          child: ListView(
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            physics: PageScrollPhysics(),
+            children: panelList,
+          ),
         );
     }
     

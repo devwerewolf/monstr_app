@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:monstr_app/constants/custom_theme.dart';
+import 'package:monstr_app/design/panel.dart';
 import 'package:monstr_app/design/title_text.dart';
 import 'package:monstr_app/models/blood.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -17,6 +18,7 @@ class _BloodStatsState extends State<BloodStats> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         // TitleText(text: widget.blood.type,),
         Text(

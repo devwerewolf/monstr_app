@@ -16,7 +16,6 @@ class SurvivalPanelList extends StatelessWidget {
         
         // TODO: More widgets!
         var aggregateList = [...bloodStatsList];
-        List<Panel> panelItems = aggregateList.map((widget) => Panel(item: widget, color: panelColor)).toList();
         
         return PanelList(
           route: "/survival",

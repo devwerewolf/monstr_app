@@ -38,11 +38,13 @@ class _FullSizeContainerState extends State<FullSizeContainer> {
         break;
     }
     
-    return Container(
-      width: width,
-      height: height,
-      decoration: widget.decoration,
-      child: widget.child,
+    return Center(
+      child: Container(
+        width: width,
+        height: height,
+        decoration: widget.decoration,
+        child: widget.child,
+      ),
     );
   }
 }
