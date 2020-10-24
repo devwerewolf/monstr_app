@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:monstr_app/constants/custom_theme.dart';
 // import 'package:monstr_app/components/sun_moon_cycle.dart';
 import 'package:monstr_app/pages/home_page/cosmos_panel_list.dart';
 import 'package:monstr_app/pages/home_page/love_panel_list.dart';
@@ -13,9 +14,9 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             CosmosPanelList(),
-            PanelListDivider(color: Colors.yellow),
+            PanelListDivider(color: CosmosPageBorderColor),
             LovePanelList(),
-            PanelListDivider(color: Colors.orange),
+            PanelListDivider(color: LovePageBorderColor),
             SurvivalPanelList(),
           ],
         ),

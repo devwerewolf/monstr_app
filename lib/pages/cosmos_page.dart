@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:monstr_app/components/primary_page_container.dart';
-import 'package:monstr_app/design/full_size_container.dart';
+import 'package:monstr_app/constants/custom_theme.dart';
 
 class CosmosPage extends StatefulWidget {
   @override
@@ -12,7 +12,7 @@ class _CosmosPageState extends State<CosmosPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PrimaryPageContainer(
-        borderColor: Colors.yellow,
+        borderColor: CosmosPageBorderColor,
         child: null
       )
     );

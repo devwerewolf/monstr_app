@@ -30,7 +30,7 @@ class _BloodStatsState extends State<BloodStats> {
         LinearPercentIndicator(
           width: 150,
           lineHeight: 20,
-          progressColor: Color(0xffba000d),
+          progressColor: SurvivalPageBorderColor,
           backgroundColor: Colors.grey[700],
           percent: widget.blood.percentageAmount,
           alignment: MainAxisAlignment.center,

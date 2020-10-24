@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:monstr_app/components/blood_group.dart';
 import 'package:monstr_app/components/primary_page_container.dart';
 import 'package:monstr_app/components/settings_button.dart';
+import 'package:monstr_app/constants/custom_theme.dart';
 
 class SurvivalPage extends StatelessWidget {
   @override
@@ -10,7 +11,7 @@ class SurvivalPage extends StatelessWidget {
     
     return Scaffold(
       body: PrimaryPageContainer(
-        borderColor: Color(0xffba000d),
+        borderColor: SurvivalPageBorderColor,
         child: Column(
           children: [
             SettingsButton(route: route),
