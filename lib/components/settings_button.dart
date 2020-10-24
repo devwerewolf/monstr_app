@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:monstr_app/constants/custom_theme.dart';
 
 class SettingsButton extends StatefulWidget {
   final String route;
@@ -18,7 +19,7 @@ class _SettingsButtonState extends State<SettingsButton> {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.settings),
+      icon: Icon(Icons.settings, color: HomePageTextColor,),
       onPressed: _goToSettings,
     );
   }

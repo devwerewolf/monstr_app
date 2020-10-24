@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:monstr_app/design/full_size_container.dart';
-import 'package:monstr_app/design/panel_list.dart';
 
 class Panel extends StatefulWidget {
   final Color color;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:monstr_app/components/blood_stats.dart';
+import 'package:monstr_app/constants/custom_theme.dart';
 import 'package:monstr_app/utils/blood_list_utils.dart';
 
 class BloodGroup extends StatefulWidget {
@@ -18,7 +19,8 @@ class _BloodGroupState extends State<BloodGroup> {
         return Column(
           children: [
             Text(
-              "Blood"
+              "Blood",
+              style: TextStyle(color: HomePageTextColor, fontSize: 40),
             ),
             ...bloodStatsList
           ],

@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             CosmosPanelList(),
-            PanelListDivider(color: Colors.green),
+            PanelListDivider(color: Colors.yellow),
             LovePanelList(),
             PanelListDivider(color: Colors.orange),
             SurvivalPanelList(),

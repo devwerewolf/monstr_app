@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:monstr_app/components/blood_group.dart';
-import 'package:monstr_app/design/settings_button.dart';
+import 'package:monstr_app/components/primary_page_container.dart';
+import 'package:monstr_app/components/settings_button.dart';
 
 class SurvivalPage extends StatelessWidget {
   @override
@@ -8,11 +9,11 @@ class SurvivalPage extends StatelessWidget {
     String route = ModalRoute.of(context).settings.name;
     
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(color: Colors.orange),
+      body: PrimaryPageContainer(
+        borderColor: Color(0xffba000d),
         child: Column(
           children: [
-            SettingsButton(route: route,),
+            SettingsButton(route: route),
             BloodGroup(),
           ],
         ),

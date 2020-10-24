@@ -23,14 +23,14 @@ class _BloodStatsState extends State<BloodStats> {
           widget.blood.type,
           style: TextStyle(
             color: HomePageTextColor,
-            fontSize: 40,
+            fontSize: 30,
           ),
           textAlign: TextAlign.center, 
         ),
         LinearPercentIndicator(
           width: 150,
           lineHeight: 20,
-          progressColor: Colors.orange,
+          progressColor: Color(0xffba000d),
           backgroundColor: Colors.grey[700],
           percent: widget.blood.percentageAmount,
           alignment: MainAxisAlignment.center,
