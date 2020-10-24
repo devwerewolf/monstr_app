@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:math';
 // import 'package:daylight/daylight.dart';
 import 'package:flutter/material.dart';
-import 'package:monstr_app/components/title_text.dart';
+import 'package:monstr_app/design/title_text.dart';
 import 'package:monstr_app/constants/suncalc_offset.dart';
 import 'package:monstr_app/design/full_size_container.dart';
 import 'package:time/time.dart';
@@ -85,24 +85,24 @@ class _SunMoonCycleState extends State<SunMoonCycle> {
     print("$rightNow | $_sunPositions | ${sin(sunAltitude)}");
     
     return Stack(
-      children: [
-        // TODO: Polish by using an AnimatedPositioned
-        // - Set the duration for 1 second
-        // - Use a linear animation curve
-        Positioned.fill(
-          bottom: sunImageFromBottom,
-          child: Center(
-            child: Image.asset(
-              "assets/sun.png"
-            ),
-          ),
-        ),
-        Positioned.fill(
-          child: TitleText(
-            text: "$dummyText | $sunAltitude",
-          ),
-        ),
-      ],
+      // children: [
+      //   // TODO: Polish by using an AnimatedPositioned
+      //   // - Set the duration for 1 second
+      //   // - Use a linear animation curve
+      //   Positioned.fill(
+      //     bottom: sunImageFromBottom,
+      //     child: Center(
+      //       child: Image.asset(
+      //         "assets/sun.png"
+      //       ),
+      //     ),
+      //   ),
+      //   Positioned.fill(
+      //     child: TitleText(
+      //       text: "$dummyText | $sunAltitude",
+      //     ),
+      //   ),
+      // ],
     );
   }
 }

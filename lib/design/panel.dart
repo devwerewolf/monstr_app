@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:monstr_app/design/full_size_container.dart';
+import 'package:monstr_app/design/panel_list.dart';
 
 class Panel extends StatefulWidget {
   final Color color;
   final Widget item;
   
   Panel({ @required this.item, this.color });
+  
+  static List<Panel> list({List<Widget> widgets, Color panelColor}) {
+    var panelItems = widgets.map((widget) => Panel(item: widget, color: panelColor)).toList();
+    return panelItems;
+  }
   
   @override
   _PanelState createState() => _PanelState();

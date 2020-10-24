@@ -6,7 +6,6 @@ class SurvivalPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String route = ModalRoute.of(context).settings.name;
-    print(route);
     
     return Scaffold(
       body: Container(

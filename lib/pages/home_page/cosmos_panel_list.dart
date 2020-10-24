@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:monstr_app/components/sun_moon_cycle.dart';
+import 'package:monstr_app/constants/custom_theme.dart';
 import 'package:monstr_app/design/panel_list.dart';
 
 class CosmosPanelList extends StatelessWidget {
@@ -9,7 +10,7 @@ class CosmosPanelList extends StatelessWidget {
     
     return PanelList(
       route: "/cosmos",
-      color: Colors.purple,
+      color: HomePagePanelColor,
       items: [
         SunMoonCycle(context),
       ],

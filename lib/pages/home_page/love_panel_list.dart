@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:monstr_app/components/title_text.dart';
+import 'package:monstr_app/design/title_text.dart';
+import 'package:monstr_app/constants/custom_theme.dart';
 import 'package:monstr_app/design/custom_text.dart';
 import 'package:monstr_app/design/firestore_collection.dart';
 import 'package:monstr_app/design/panel.dart';
@@ -14,17 +15,26 @@ class LovePanelList extends StatelessWidget {
     return FirestoreCollection(
       path: "affirmations",
       render: (documentSnapshots) {
-        const panelColor = Colors.green;
+        const panelColor = HomePagePanelColor;
         var affirmations = Affirmation.list(documentSnapshots);
         var affirmationWidgets = affirmations.map((affirmation) {
           // return TitleText(
           //   text: affirmation.text
           // );
           
-          return CustomText(
+          // return CustomText(
+          //   affirmation.text,
+          //   size: Titles[0],
+          //   centered: true,
+          // );
+          
+          return Text(
             affirmation.text,
-            size: Titles[0],
-            centered: true,
+            style: TextStyle(
+              color: HomePageTextColor,
+              fontSize: 40,
+            ),
+            textAlign: TextAlign.center,
           );
         });
         List<Panel> panelItems = affirmationWidgets.map((widget) => Panel(item: widget, color: panelColor)).toList();
