@@ -67,6 +67,7 @@ class _SunMoonCycleState extends State<SunMoonCycle> {
   @override
   Widget build(BuildContext context) {
     String dummyText = "Sun Moon Cycle 🐺";
+    String celestialBody = "sun";
     
     if (isPastSunrise) {
       dummyText = "Rise and shine, nerd!";
@@ -82,6 +83,7 @@ class _SunMoonCycleState extends State<SunMoonCycle> {
     
     if (isEvening) {
       dummyText = "Dinner!";
+      celestialBody = "moon";
     }
     
     print("$rightNow | $_sunPositions | ${sin(sunAltitude)}");
@@ -107,19 +109,28 @@ class _SunMoonCycleState extends State<SunMoonCycle> {
     //   ],
     // );
     
-    return PanelList(
-      items: [
-        Text(
-          dummyText,
-          style: TextStyle(
-            color: HomePageTextColor,
-            fontSize: 40
+    return FullSizeContainer(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            dummyText,
+            style: TextStyle(
+              color: HomePageTextColor,
+              fontSize: 40
+            ),
+            textAlign: TextAlign.center,
           ),
-          textAlign: TextAlign.center,
-        ),
-      ],
-      color: HomePagePanelColor,
-      
+          Padding(
+            padding: const EdgeInsets.only(left: 16.0),
+            child: Image.asset(
+              "assets/$celestialBody.png",
+              width: 128,
+              height: 128,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -58,6 +58,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/sun.png
+    - assets/moon.png
   
   fonts:
     - family: Grenze
