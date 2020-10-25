@@ -31,16 +31,19 @@ class _LovePageState extends State<LovePage> {
                     fontSize: 20,
                   ),
                   textAlign: TextAlign.center,
-                )
-              )
+                ),
+              ),
             );
             
             return FullSizeContainer(
                 child: Column(
                 children: [
-                  TitleText(
-                    text: "Daily Positive Affirmations 🧡",
-                    color: LovePageBorderColor,
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 24),
+                    child: TitleText(
+                      text: "Love thyself 🧡",
+                      color: LovePageBorderColor,
+                    ),
                   ),
                   ...affirmationWidgets
                 ],

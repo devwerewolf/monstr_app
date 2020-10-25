@@ -1,10 +1,6 @@
 import 'dart:async';
 import 'dart:math';
-// import 'package:daylight/daylight.dart';
 import 'package:flutter/material.dart';
-import 'package:monstr_app/constants/custom_theme.dart';
-import 'package:monstr_app/design/panel_list.dart';
-import 'package:monstr_app/design/title_text.dart';
 import 'package:monstr_app/constants/suncalc_offset.dart';
 import 'package:monstr_app/design/full_size_container.dart';
 import 'package:time/time.dart';
@@ -12,8 +8,9 @@ import 'package:flutter_suncalc/flutter_suncalc.dart';
 
 class SunMoonCycle extends StatefulWidget {
   final BuildContext context;
+  final Function(_SunMoonCycleState cycleState) render;
   
-  SunMoonCycle(this.context);
+  SunMoonCycle(this.context, {this.render});
   
   @override
   _SunMoonCycleState createState() => _SunMoonCycleState();
@@ -23,11 +20,11 @@ class _SunMoonCycleState extends State<SunMoonCycle> {
   Timer _timer;
   DateTime _now = DateTime.now();
   Map<String, DateTime> _sunTimes = Map();
+  num _lat = 39.833;
+  num _long = -98.583;
   Map<String, num> _sunPositions = Map();
   Map<String, DateTime> _moonTimes = Map();
   Map<String, num> _moonPositions = Map();
-  num _lat = 39.833;
-  num _long = -98.583;
   
   bool get isCurrentRoute => ModalRoute.of(widget.context).isCurrent;
   DateTime get rightNow => _now.toLocal();
@@ -42,6 +39,12 @@ class _SunMoonCycleState extends State<SunMoonCycle> {
   bool get isMorning => !isPastSunrise && sunAltitude <= PI/2;
   bool get isAfternoon => isPastSunrise && sunAltitude >= 0;
   bool get isEvening => sunAltitude <= 0;
+  
+  _SunMoonCycleState() {
+    _now = DateTime.now().toUtc();
+    _sunTimes = SunCalc.getTimes(_now, _lat, _long);
+    _sunPositions = SunCalc.getPosition(_now, _lat, _long);
+  }
   
   @override
   void initState() {
@@ -66,50 +69,8 @@ class _SunMoonCycleState extends State<SunMoonCycle> {
   
   @override
   Widget build(BuildContext context) {
-    String dummyText = "Sun Moon Cycle 🐺";
-    String celestialBody = "sun";
-    
-    if (isPastSunrise) {
-      dummyText = "Rise and shine, nerd!";
-    }
-    
-    if (isPastSunset) {
-      dummyText = "Go to bed, nerd!";
-    }
-    
-    if (isAfternoon) {
-      dummyText = "Lunch!";
-    }
-    
-    if (isEvening) {
-      dummyText = "Dinner!";
-      celestialBody = "moon";
-    }
-    
-    print("$rightNow | $_sunPositions | ${sin(sunAltitude)}");
-    
     return FullSizeContainer(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            dummyText,
-            style: TextStyle(
-              color: HomePageTextColor,
-              fontSize: 40
-            ),
-            textAlign: TextAlign.center,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0),
-            child: Image.asset(
-              "assets/$celestialBody.png",
-              width: 128,
-              height: 128,
-            ),
-          ),
-        ],
-      ),
+      child: widget.render(this)
     );
   }
 }

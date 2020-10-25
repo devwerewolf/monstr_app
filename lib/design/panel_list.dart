@@ -33,16 +33,9 @@ class _PanelListState extends State<PanelList> {
   
   @override
   Widget build(BuildContext context) {
-    var panelList = widget.items.map((panel) => Panel(item: panel, color: widget.color)).toList();
+    var panelList = Panel.list(widgets: widget.items, panelColor: widget.color);
     bool hasRoute = widget.route != null;
     Widget childView;
-    
-    // TODO: Decide whether or not to keep this; is this desired behavior?
-    if (panelList.isEmpty) {
-      panelList = [
-        Panel(item: Container(), color: widget.color),
-      ];
-    }
     
     switch (widget.render) {
       case PanelListRender.Row:
