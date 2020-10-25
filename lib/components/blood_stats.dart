@@ -17,27 +17,30 @@ class BloodStats extends StatefulWidget {
 class _BloodStatsState extends State<BloodStats> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        // TitleText(text: widget.blood.type,),
-        Text(
-          widget.blood.type,
-          style: TextStyle(
-            color: HomePageTextColor,
-            fontSize: 30,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          // TitleText(text: widget.blood.type,),
+          Text(
+            widget.blood.type,
+            style: TextStyle(
+              color: HomePageTextColor,
+              fontSize: 30,
+            ),
+            textAlign: TextAlign.center,
           ),
-          textAlign: TextAlign.center, 
-        ),
-        LinearPercentIndicator(
-          width: 150,
-          lineHeight: 20,
-          progressColor: SurvivalPageBorderColor,
-          backgroundColor: Colors.grey[700],
-          percent: widget.blood.percentageAmount,
-          alignment: MainAxisAlignment.center,
-        ),
-      ],
+          LinearPercentIndicator(
+            width: 150,
+            lineHeight: 20,
+            progressColor: SurvivalPageBorderColor,
+            backgroundColor: Colors.grey[600],
+            percent: widget.blood.percentageAmount,
+            alignment: MainAxisAlignment.center,
+          ),
+        ],
+      ),
     );
   }
 }

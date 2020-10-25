@@ -14,7 +14,7 @@ class PanelList extends StatefulWidget {
   final PanelListRender render;
   
   PanelList({Key key,
-    @required this.route,
+    this.route,
     this.items = const[],
     this.color = Colors.white,
     this.render = PanelListRender.Scroll
