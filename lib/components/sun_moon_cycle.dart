@@ -88,27 +88,6 @@ class _SunMoonCycleState extends State<SunMoonCycle> {
     
     print("$rightNow | $_sunPositions | ${sin(sunAltitude)}");
     
-    // return Stack(
-    //   children: [
-    //     // TODO: Polish by using an AnimatedPositioned
-    //     // - Set the duration for 1 second
-    //     // - Use a linear animation curve
-    //     Positioned.fill(
-    //       bottom: sunImageFromBottom,
-    //       child: Center(
-    //         child: Image.asset(
-    //           "assets/sun.png"
-    //         ),
-    //       ),
-    //     ),
-    //     Positioned.fill(
-    //       child: TitleText(
-    //         text: "$dummyText | $sunAltitude",
-    //       ),
-    //     ),
-    //   ],
-    // );
-    
     return FullSizeContainer(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

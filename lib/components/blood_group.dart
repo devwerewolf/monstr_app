@@ -18,9 +18,16 @@ class _BloodGroupState extends State<BloodGroup> {
         
         return Column(
           children: [
-            Text(
-              "Blood",
-              style: TextStyle(color: HomePageTextColor, fontSize: 40),
+            Padding(
+              padding: const EdgeInsets.only(top: 16.0, bottom: 8.0),
+              child: Text(
+                "Blood",
+                style: TextStyle(
+                  color: HomePageTextColor,
+                  fontSize: 30,
+                  decoration: TextDecoration.underline
+                ),
+              ),
             ),
             ...bloodStatsList
           ],
