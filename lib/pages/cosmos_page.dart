@@ -21,7 +21,7 @@ class _CosmosPageState extends State<CosmosPage> {
         titleText: "Reach for the stars 🌟",
         child: SunMoonCycle(context,
           render: (cycleState) {
-            MoonPhase moonPhase = Moon.phase(cycleState.rightNow);
+            MoonPhase moonPhase = Moon.phase(cycleState.rightNow.add(2.days));
             String displayMoonPhase;
             
             switch (moonPhase) {
@@ -48,18 +48,20 @@ class _CosmosPageState extends State<CosmosPage> {
                 break;
             }
             
+            // print(displayMoonPhase);
+            
             return Column(
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
-                  // child: Text(
-                  //   displayMoonPhase,
-                  //   style: TextStyle(
-                  //     color: CosmosPageBorderColor,
-                  //     fontSize: 30,
-                  //   ),
-                  // ),
                   child: MoonBox(moonPhase),
+                ),
+                Text(
+                  displayMoonPhase,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 30,
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 24.0),
