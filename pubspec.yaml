@@ -59,6 +59,8 @@ flutter:
   assets:
     - assets/sun.png
     - assets/moon.png
+    - assets/sunrise.png
+    - assets/sunset.png
   
   fonts:
     - family: Grenze

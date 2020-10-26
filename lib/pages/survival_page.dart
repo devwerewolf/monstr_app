@@ -12,11 +12,11 @@ class SurvivalPage extends StatelessWidget {
     
     return Scaffold(
       body: PrimaryPageContainer(
-        borderColor: SurvivalPageBorderColor,
+        titleText: "Food stuffs 😋",
+        color: SurvivalPageBorderColor,
         child: Column(
           children: [
             SettingsButton(route: route),
-            TitleText(text: "Food stuffs 😋", color: SurvivalPageBorderColor,),
             BloodGroup(),
           ],
         ),

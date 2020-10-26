@@ -3,9 +3,10 @@ import 'package:monstr_app/constants/custom_theme.dart';
 
 class CelestialEntity extends StatefulWidget {
   final String name;
-  final String text;
+  final String titleText;
+  final String subtitleText;
   
-  CelestialEntity({@required this.name, this.text});
+  CelestialEntity({@required this.name, this.titleText, this.subtitleText});
   
   @override
   _CelestialEntityState createState() => _CelestialEntityState();
@@ -14,7 +15,7 @@ class CelestialEntity extends StatefulWidget {
 class _CelestialEntityState extends State<CelestialEntity> {
   @override
   Widget build(BuildContext context) {
-    List<Widget> rowWidgets = [
+    List<Widget> myWidgets = [
       Image.asset(
         "assets/${widget.name}.png",
         width: 128,
@@ -22,12 +23,12 @@ class _CelestialEntityState extends State<CelestialEntity> {
       )
     ];
     
-    if (widget.text != null) {
-      rowWidgets.insert(0,
+    if (widget.titleText != null) {
+      myWidgets.insert(0,
         Padding(
           padding: const EdgeInsets.only(right: 8.0),
           child: Text(
-            widget.text,
+            widget.titleText,
             style: TextStyle(
               color: Colors.white,
               fontSize: 40
@@ -38,9 +39,22 @@ class _CelestialEntityState extends State<CelestialEntity> {
       );
     }
     
-    return Row(
+    if (widget.subtitleText != null) {
+      myWidgets.add(
+        Text(
+          widget.subtitleText,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+          ),
+          textAlign: TextAlign.center,
+        )
+      );
+    }
+    
+    return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: rowWidgets,
+      children: myWidgets,
     );
   }
 }

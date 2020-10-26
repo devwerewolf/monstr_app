@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class PanelListDivider extends StatefulWidget {
+class ItemDivider extends StatefulWidget {
   final Color color;
   
-  PanelListDivider({this.color});
+  ItemDivider({this.color});
   
   @override
-  _PanelListDividerState createState() => _PanelListDividerState();
+  _ItemDividerState createState() => _ItemDividerState();
 }
 
-class _PanelListDividerState extends State<PanelListDivider> {
+class _ItemDividerState extends State<ItemDivider> {
   @override
   Widget build(BuildContext context) {
     double myIndent = 20;

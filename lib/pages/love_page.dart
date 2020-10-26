@@ -3,7 +3,6 @@ import 'package:monstr_app/components/primary_page_container.dart';
 import 'package:monstr_app/constants/custom_theme.dart';
 import 'package:monstr_app/design/firestore_collection.dart';
 import 'package:monstr_app/design/full_size_container.dart';
-import 'package:monstr_app/design/title_text.dart';
 import 'package:monstr_app/models/affirmation.dart';
 
 class LovePage extends StatefulWidget {
@@ -16,7 +15,8 @@ class _LovePageState extends State<LovePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PrimaryPageContainer(
-        borderColor: LovePageBorderColor,
+        titleText: "Love thyself 🧡",
+        color: LovePageBorderColor,
         child: FirestoreCollection(
           path: "affirmations",
           render: (documentSnapshots) {
@@ -36,15 +36,8 @@ class _LovePageState extends State<LovePage> {
             );
             
             return FullSizeContainer(
-                child: Column(
+              child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 24),
-                    child: TitleText(
-                      text: "Love thyself 🧡",
-                      color: LovePageBorderColor,
-                    ),
-                  ),
                   ...affirmationWidgets
                 ],
               ),

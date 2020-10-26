@@ -26,18 +26,18 @@ class CosmosPanelList extends StatelessWidget {
             }
             
             if (cycleState.isAfternoon) {
-              dummyText = "Lunch!";
+              dummyText = "Good afternoon!";
             }
             
             if (cycleState.isEvening) {
-              dummyText = "Dinner!";
+              dummyText = "Good evening!";
               celestialName = "moon";
             }
             
             return FullSizeContainer(
               child: CelestialEntity(
                 name: celestialName,
-                text: dummyText,
+                titleText: dummyText,
               )
             );
           },

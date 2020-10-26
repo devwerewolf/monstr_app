@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:monstr_app/constants/custom_theme.dart';
+import 'package:monstr_app/design/title_text.dart';
 
 class PrimaryPageContainer extends StatefulWidget {
+  final String titleText;
   final Widget child;
-  final Color borderColor;
+  final Color color;
   
-  PrimaryPageContainer({@required this.child, this.borderColor = Colors.white});
+  PrimaryPageContainer({@required this.child, this.color = Colors.white, this.titleText});
   
   @override
   _PrimaryPageContainerState createState() => _PrimaryPageContainerState();
@@ -24,12 +26,20 @@ class _PrimaryPageContainerState extends State<PrimaryPageContainer> {
           decoration: BoxDecoration(
             border: Border.symmetric(
               vertical: BorderSide(
-                color: widget.borderColor,
+                color: widget.color,
                 width: 5,
               ),
             ),
           ),
-          child: widget.child
+          child: Column(
+            children: [
+              TitleText(
+                color: widget.color,
+                text: widget.titleText
+              ),
+              widget.child,
+            ],
+          )
         ),
       ),
     );

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:monstr_app/components/celestial_entity.dart';
+import 'package:monstr_app/components/moon_box.dart';
 import 'package:monstr_app/components/primary_page_container.dart';
 import 'package:monstr_app/components/sun_moon_cycle.dart';
 import 'package:monstr_app/constants/custom_theme.dart';
-import 'package:monstr_app/design/title_text.dart';
+import 'package:monstr_app/utils/moon_phase.dart';
+import 'package:time/time.dart';
 
 class CosmosPage extends StatefulWidget {
   @override
@@ -14,16 +17,65 @@ class _CosmosPageState extends State<CosmosPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PrimaryPageContainer(
-        borderColor: CosmosPageBorderColor,
+        color: CosmosPageBorderColor,
+        titleText: "Reach for the stars 🌟",
         child: SunMoonCycle(context,
           render: (cycleState) {
+            MoonPhase moonPhase = Moon.phase(cycleState.rightNow);
+            String displayMoonPhase;
+            
+            switch (moonPhase) {
+              case MoonPhase.NewMoon:
+                displayMoonPhase = "New Moon";
+                break;
+              case MoonPhase.FirstQuarter:
+              case MoonPhase.LastQuarter:
+                displayMoonPhase = "Quarter Moon";
+                break;
+              case MoonPhase.Full:
+                displayMoonPhase = "Full Moon";
+                break;
+              case MoonPhase.WaningCrescent:
+              case MoonPhase.WaxingCrescent:
+                displayMoonPhase = "Crescent Moon";
+                break;
+              case MoonPhase.WaningGibbous:
+              case MoonPhase.WaxingGibbous:
+                displayMoonPhase = "Gibbous Moon";
+                break;
+              default:
+                displayMoonPhase = "Idk Moon";
+                break;
+            }
+            
             return Column(
               children: [
-                TitleText(
-                  color: CosmosPageBorderColor,
-                  text: "Reach for the stars 🌟",
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  // child: Text(
+                  //   displayMoonPhase,
+                  //   style: TextStyle(
+                  //     color: CosmosPageBorderColor,
+                  //     fontSize: 30,
+                  //   ),
+                  // ),
+                  child: MoonBox(moonPhase),
                 ),
-                
+                Padding(
+                  padding: const EdgeInsets.only(top: 24.0),
+                  child: CelestialEntity(
+                    name: "sunrise",
+                    subtitleText: "${cycleState.sunrise}",
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16.0),
+                  child: CelestialEntity(
+                    name: "sunset",
+                    // titleText: "Sunset",
+                    subtitleText: "${cycleState.sunset}",
+                  ),
+                ),
               ],
             );
           }
